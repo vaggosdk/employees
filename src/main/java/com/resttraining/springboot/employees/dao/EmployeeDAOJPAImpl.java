@@ -13,7 +13,7 @@ public class EmployeeDAOJPAImpl implements EmployeeDAO {
     private EntityManager entityManager;
 
     @Autowired
-    public EmployeeDAOJPAImpl(EntityManager entityManager){
+    public EmployeeDAOJPAImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
@@ -21,5 +21,21 @@ public class EmployeeDAOJPAImpl implements EmployeeDAO {
     public List<Employee> findAll() {
         // Create a query to retrieve all employees
         return entityManager.createQuery("FROM Employee", Employee.class).getResultList();
+    }
+
+    @Override
+    public Employee findById(long theId) {
+        return entityManager.find(Employee.class, theId);
+    }
+
+    @Override
+    public Employee save(Employee theEmployee) {
+        return entityManager.merge(theEmployee);
+    }
+
+    @Override
+    public void deleteById(long theId) {
+        Employee employee = entityManager.find(Employee.class, theId);
+        entityManager.remove(employee);
     }
 }
