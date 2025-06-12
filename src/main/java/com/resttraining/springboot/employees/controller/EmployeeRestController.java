@@ -1,7 +1,8 @@
 package com.resttraining.springboot.employees.controller;
 
-import com.resttraining.springboot.employees.dao.EmployeDAO;
+import com.resttraining.springboot.employees.dao.EmployeeDAO;
 import com.resttraining.springboot.employees.entity.Employee;
+import com.resttraining.springboot.employees.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,11 +14,11 @@ import java.util.List;
 @RequestMapping("/api/employees")
 public class EmployeeRestController {
 
-    private EmployeDAO employeDAO;
+    private EmployeeService employeeService;
 
     @Autowired
-    public EmployeeRestController(EmployeDAO employeDAO) {
-        this.employeDAO = employeDAO;
+    public EmployeeRestController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
     /**
@@ -27,7 +28,7 @@ public class EmployeeRestController {
      */
     @GetMapping
     public List<Employee> listEmployees() {
-        return employeDAO.findAll();
+        return employeeService.findAll();
     }
 
 }

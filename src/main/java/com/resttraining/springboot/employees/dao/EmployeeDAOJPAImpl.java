@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class EmployeeDAOJPAImpl implements EmployeDAO {
+public class EmployeeDAOJPAImpl implements EmployeeDAO {
 
     private EntityManager entityManager;
 

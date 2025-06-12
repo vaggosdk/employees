@@ -4,7 +4,7 @@ import com.resttraining.springboot.employees.entity.Employee;
 
 import java.util.List;
 
-public interface EmployeDAO {
+public interface EmployeeDAO {
 
     List<Employee> findAll();
 }
